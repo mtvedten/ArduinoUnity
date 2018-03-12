@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class HandleArduinoInput : MonoBehaviour {
 
     public SerialController serialController;
@@ -9,9 +10,20 @@ public class HandleArduinoInput : MonoBehaviour {
     // Initialization
     void Start()
     {
-        serialController = GameObject.Find("SerialController").GetComponent<SerialController>();
+        serialController.enabled = false;
+        serialController.portName = GetComponent<SelectComPort>().Port(0);
+
+
+        // serialController = GameObject.Find("SerialController").GetComponent<SerialController>();
+        serialController.enabled = true;
+
 
         Debug.Log("Press A or Z to execute some actions");
+
+
+
+
+
     }
 
     // Executed each frame
@@ -62,7 +74,8 @@ public class HandleArduinoInput : MonoBehaviour {
             {
                 case "0":
                     SetCubeColor(Color.white);
-                    break;
+                     startRotation(new Vector3(-1, -3, -4));
+                break;
                 case "1":
                     SetCubeColor(Color.blue);
                     break;
