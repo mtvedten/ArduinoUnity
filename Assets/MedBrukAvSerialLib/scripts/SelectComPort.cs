@@ -24,8 +24,9 @@ public class SelectComPort : MonoBehaviour {
 
     public string Port(int num)
     {
-        Debug.Log("Setting port: " + ports[num]);
-        return ports[num];
+        // Debug.Log("Setting port: " + ports[num]);
+        if (ports.Length > 0) return ports[num];
+        else return null;
     }
     
 
